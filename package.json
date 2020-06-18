@@ -12,7 +12,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/bradennapier/eslint-plugin-ts-import"
+    "url": "git://github.com/bradennapier/eslint-plugin-ts-import.git"
   },
   "bugs": {
     "url": "https://github.com/bradennapier/eslint-plugin-ts-import/issues"
