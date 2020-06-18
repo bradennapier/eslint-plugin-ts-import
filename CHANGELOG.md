@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.0.0...v1.0.1) (2020-06-18)
+
+
+### Bug Fixes
+
+* build and add node 14 to build ([#3](https://github.com/bradennapier/eslint-plugin-ts-import/issues/3)) ([95b7a5b](https://github.com/bradennapier/eslint-plugin-ts-import/commit/95b7a5b4efd89fa5125b1afb069bb0e4be870a4f))
+
 # 1.0.0 (2020-06-18)
 
 
