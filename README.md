@@ -1,0 +1,107 @@
+<div align="center">
+  <h1>
+    <br/>
+    <br/>
+    <p align="center">
+      <img src="docs/img/style.png" width="400" title="eslint-plugin-typescript-import-patterns">
+    </p>
+    <br />
+    eslint-plugin-typescript-import-patterns
+    <br />
+    <br />
+    <br />
+    <br />
+  </h1>
+  <sup>
+    <br />
+    <br />
+    <a href="https://www.npmjs.com/package/eslint-plugin-typescript-import-patterns">
+       <img src="https://img.shields.io/npm/v/eslint-plugin-typescript-import-patterns.svg" alt="npm package" />
+    </a>
+    <!-- TODO
+     <a href="https://www.npmjs.com/package/react-style-vars">
+      <img src="https://img.shields.io/npm/dm/react-style-vars.svg" alt="npm downloads" />
+    </a>
+    -->
+    <!-- TODO
+    <a href="http://bradennapier.github.io/react-style-vars">
+      <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
+    </a>
+    -->
+    <br />
+    Define specific import rules for files within your <a href="https://www.typescriptlang.org/index.html"> Typescript </a> project.  Adapted from [VSCode's](https://github.com/microsoft/vscode) [code-import-patterns](https://github.com/microsoft/vscode/blob/master/build/lib/eslint/code-import-patterns.ts)
+  </sup>
+  <br />
+  <br />
+  <br />
+  <br />
+  <pre>yarn add --dev <a href="https://www.npmjs.com/package/eslint-plugin-typescript-import-patterns">eslint-plugin-typescript-import-patterns</a></pre>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</div>
+
+## Features
+
+- Provide import patterns that restrict imports of certain files based on location.
+- Ensure imports meet the expected guidelines within your repo.
+- Adapted from VSCode's rule `code-import-patterns`.
+- Useful in monorepos and most Typescript projects which utilize incremental builds.
+
+## Simple Example
+
+```javascript
+// .eslintrc.js
+
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.lint.json',
+    sourceType: 'module',
+  },
+  rules: {
+    'import-patterns': [
+      'error',
+      {
+        // these rules apply to any files which are within the src/services directory
+        target: '**/src/services/*/**',
+        // allow any imports to node_modules.  We confirm that the node_module exists in case the use of paths / absolute imports is used so that
+        // we can tell the difference
+        modules: true,
+        allowed: [
+          // anything in src/services/{service}/** may import config `import config from 'config'`
+          'config',
+          // anything in src/services/{service}/** may import from core `import someModule from 'core/someModule'`
+          'core/**',
+          // run target.replace(arr[0], arr[1]) to build pattern
+          // any service may import from itself - so src/services/rest-api/** may always import from `src/services/rest-api/**`
+          // whether using relative or absolute imports.  However it will not be able to import from `../api-client/**` or `services/api-client/**`
+          [/.*\/src\/services\/([^/]*)\/.*/, '**/src/services/$1/**'],
+          // this rule without the above rule would only allow the files to import themselves or higher and would restrict `../`
+          './**',
+        ],
+        message:
+          'Optional custom message to display when violated',
+      },
+      {
+        target: '**/src/core/**',
+        modules: true,
+        allowed: ['config', 'core/**', './**'],
+        message:
+          'Core packages may only import other core modules or the config',
+      },
+    ],
+  },
+  plugins: ['typescript-import-patterns'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        directory: 'tsconfig.lint.json',
+      },
+    },
+  },
+}
+```
