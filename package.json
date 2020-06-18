@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/bradennapier/eslint-plugin-ts-import/issues"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "build": "yarn build:cjs && yarn build:es",
     "build:cjs": "tsc",
