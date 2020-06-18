@@ -85,7 +85,10 @@ export class ImportPathInternalResolver {
     return true;
   }
 
-  resolveImport(oldImport: string, currentDir: string): string | undefined {
+  resolveImport(
+    oldImport: string,
+    currentDir: string,
+  ): string | undefined | void {
     const { config } = this;
     const newImports = this.resolver.getImportSuggestions(
       oldImport,
