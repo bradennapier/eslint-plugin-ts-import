@@ -21,7 +21,7 @@ interface ImportPatternsConfig {
   message?: string;
 }
 
-export default new (class implements eslint.Rule.RuleModule {
+export default class ImportPatternsRule implements eslint.Rule.RuleModule {
   private importResolver: ImportPathInternalResolver | undefined;
 
   readonly meta: eslint.Rule.RuleMetaData = {
@@ -171,4 +171,4 @@ export default new (class implements eslint.Rule.RuleModule {
       });
     }
   }
-})();
+}
