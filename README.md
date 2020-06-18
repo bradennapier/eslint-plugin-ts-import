@@ -3,10 +3,10 @@
     <br/>
     <br/>
     <p align="center">
-      <img src="docs/img/style.png" width="400" title="eslint-plugin-typescript-import-patterns">
+      <img src="docs/img/style.png" width="400" title="eslint-plugin-ts-import">
     </p>
     <br />
-    eslint-plugin-typescript-import-patterns
+    eslint-plugin-ts-import
     <br />
     <br />
     <br />
@@ -15,16 +15,16 @@
   <sup>
     <br />
     <br />
-    <a href="https://www.npmjs.com/package/eslint-plugin-typescript-import-patterns">
-       <img src="https://img.shields.io/npm/v/eslint-plugin-typescript-import-patterns.svg" alt="npm package" />
+    <a href="https://www.npmjs.com/package/eslint-plugin-ts-import">
+       <img src="https://img.shields.io/npm/v/eslint-plugin-ts-import.svg" alt="npm package" />
     </a>
     <!-- TODO
-     <a href="https://www.npmjs.com/package/react-style-vars">
-      <img src="https://img.shields.io/npm/dm/react-style-vars.svg" alt="npm downloads" />
+     <a href="https://www.npmjs.com/package/eslint-plugin-ts-import">
+      <img src="https://img.shields.io/npm/dm/eslint-plugin-ts-import.svg" alt="npm downloads" />
     </a>
     -->
     <!-- TODO
-    <a href="http://bradennapier.github.io/react-style-vars">
+    <a href="http://bradennapier.github.io/eslint-plugin-ts-import">
       <img src="https://img.shields.io/badge/demos-🚀-yellow.svg" alt="demos" />
     </a>
     -->
@@ -35,7 +35,7 @@
   <br />
   <br />
   <br />
-  <pre>yarn add --dev <a href="https://www.npmjs.com/package/eslint-plugin-typescript-import-patterns">eslint-plugin-typescript-import-patterns</a></pre>
+  <pre>yarn add --dev <a href="https://www.npmjs.com/package/eslint-plugin-ts-import">eslint-plugin-ts-import</a></pre>
   <br />
   <br />
   <br />
@@ -63,7 +63,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'import-patterns': [
+    'ts-import/patterns': [
       'error',
       {
         // these rules apply to any files which are within the src/services directory
@@ -95,7 +95,7 @@ module.exports = {
       },
     ],
   },
-  plugins: ['typescript-import-patterns'],
+  plugins: ['ts-import'],
   settings: {
     'import/resolver': {
       typescript: {
