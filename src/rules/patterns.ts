@@ -144,7 +144,7 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
           // console.log('regexp!');
           const [re, replaceWith] = pattern;
           const newPattern = fileName.replace(re, replaceWith);
-          console.log({ newPattern });
+          // console.log({ newPattern });
           if (minimatch(importPath || path, newPattern)) {
             matched = true;
             break;
