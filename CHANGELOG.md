@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.0...v1.1.1) (2020-06-19)
+
+
+### Bug Fixes
+
+* force patch deploy ([32d4204](https://github.com/bradennapier/eslint-plugin-ts-import/commit/32d42045afa31b7d6f34fa5b810584b44702eea1))
+
 # [1.1.0](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.0.1...v1.1.0) (2020-06-19)
 
 
