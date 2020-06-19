@@ -29,7 +29,7 @@
     </a>
     -->
     <br />
-    Define specific import rules for files within your <a href="https://www.typescriptlang.org/index.html"> Typescript </a> project.  Adapted from <a href="https://github.com/microsoft/vscode">VSCode's</a> <a href="https://github.com/microsoft/vscode/blob/master/build/lib/eslint/code-import-patterns.ts">code-import-patterns</a>
+    Define specific import rules for files within your <a href="https://www.typescriptlang.org/index.html"> Typescript </a> project.  Adapted and enhanced from <a href="https://github.com/microsoft/vscode">VSCode's</a> <a href="https://github.com/microsoft/vscode/blob/master/build/lib/eslint/code-import-patterns.ts">code-import-patterns</a>
   </sup>
   <br />
   <br />
@@ -48,6 +48,7 @@
 - Provide import patterns that restrict imports of certain files based on location.
 - Ensure imports meet the expected guidelines within your repo.
 - Adapted from VSCode's rule `code-import-patterns`.
+- Provide custom eslint messaging for each pattern if needed.
 - Useful in monorepos and most Typescript projects which utilize incremental builds.
 
 ## Simple Example
