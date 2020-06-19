@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.1...v1.1.2) (2020-06-19)
+
+
+### Bug Fixes
+
+* remove log from rule ([bbb4996](https://github.com/bradennapier/eslint-plugin-ts-import/commit/bbb499688e166349290e85bd6c28c782aa989435))
+
 ## [1.1.1](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.0...v1.1.1) (2020-06-19)
 
 
