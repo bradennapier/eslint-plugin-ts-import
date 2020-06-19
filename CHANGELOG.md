@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.2...v1.1.3) (2020-06-19)
+
+
+### Bug Fixes
+
+* 🐛 allow extraneous type-only import ([d68ab00](https://github.com/bradennapier/eslint-plugin-ts-import/commit/d68ab0074d2345a86ca76d0ba5b49fea13721acf))
+* 🐛 also exclude the type only import in utils.ts ([feed9e0](https://github.com/bradennapier/eslint-plugin-ts-import/commit/feed9e03f9693e91028434e8959a4917a80c85a5))
+* 🐛 move typescript-eslint experimental utils to dev deps ([547ef9d](https://github.com/bradennapier/eslint-plugin-ts-import/commit/547ef9dbb50fde407fa3a32cc9df518ec825b9e4))
+
 ## [1.1.2](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.1...v1.1.2) (2020-06-19)
 
 
