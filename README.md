@@ -29,7 +29,7 @@
     </a>
     -->
     <br />
-    Define specific import rules for files within your <a href="https://www.typescriptlang.org/index.html"> Typescript </a> project.  Adapted from [VSCode's](https://github.com/microsoft/vscode) [code-import-patterns](https://github.com/microsoft/vscode/blob/master/build/lib/eslint/code-import-patterns.ts)
+    Define specific import rules for files within your <a href="https://www.typescriptlang.org/index.html"> Typescript </a> project.  Adapted from <a href="https://github.com/microsoft/vscode">VSCode's</a> <a href="https://github.com/microsoft/vscode/blob/master/build/lib/eslint/code-import-patterns.ts">code-import-patterns</a>
   </sup>
   <br />
   <br />
