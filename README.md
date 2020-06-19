@@ -74,24 +74,23 @@ module.exports = {
         allowed: [
           // anything in src/services/{service}/** may import config `import config from 'config'`
           'config',
+
           // anything in src/services/{service}/** may import from core `import someModule from 'core/someModule'`
           'core/**',
+
           // run target.replace(arr[0], arr[1]) to build pattern
           // any service may import from itself - so src/services/rest-api/** may always import from `src/services/rest-api/**`
           // whether using relative or absolute imports.  However it will not be able to import from `../api-client/**` or `services/api-client/**`
           [/.*\/src\/services\/([^/]*)\/.*/, '**/src/services/$1/**'],
+
+          // allow any imports whether relative or absolute as long as they are not higher than /src/services
+          [/(.*\/src\/services).*/, '$1/**'],
+
           // this rule without the above rule would only allow the files to import themselves or higher and would restrict `../`
           './**',
         ],
         message:
           'Optional custom message to display when violated',
-      },
-      {
-        target: '**/src/core/**',
-        modules: true,
-        allowed: ['config', 'core/**', './**'],
-        message:
-          'Core packages may only import other core modules or the config',
       },
     ],
   },
