@@ -31,7 +31,7 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
         "This import violates the provided import-patterns (allowed: '{{allowed}}')",
     },
     docs: {
-      url: 'https://github.com/bradennapier/eslint-plugin-import-patterns',
+      url: 'https://github.com/bradennapier/eslint-plugin-ts-import',
     },
   };
 
