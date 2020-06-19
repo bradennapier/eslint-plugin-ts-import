@@ -1,9 +1,5 @@
 import ImportPatternsRule from './rules/patterns';
 
-const plugin = {
-  rules: {
-    patterns: new ImportPatternsRule(),
-  },
+export const rules = {
+  patterns: new ImportPatternsRule(),
 };
-
-export default plugin;
