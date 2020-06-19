@@ -415,9 +415,9 @@ acorn-jsx@^5.2.0:
   integrity sha512-HiUX/+K2YpkpJ+SzBffkM/AQ2YE03S0U1kjTLVpoJdhZMOWy8qvXVN9JdLqv2QsaQ6MPYQIuNmwD8zOiYUofLQ==
 
 acorn@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.2.0.tgz#17ea7e40d7c8640ff54a694c889c26f31704effe"
-  integrity sha512-apwXVmYVpQ34m/i71vrApRrRKCWQnZZF1+npOD0WV5xZFfwWOmKGQ2RWlfdy9vWITsenisM8M0Qeq8agcFHNiQ==
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.3.1.tgz#85010754db53c3fbaf3b9ea3e083aa5c5d147ffd"
+  integrity sha512-tLc0wSnatxAQHVHUapaHdz72pi9KUyHjq5KyHjGg9Y8Ifdc79pTh2XvI6I1/chZbnM7QtNKzh66ooDogPZSleA==
 
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
@@ -2464,6 +2464,11 @@ gh-pages@^3.0.0:
     fs-extra "^8.1.0"
     globby "^6.1.0"
 
+git-cz@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/git-cz/-/git-cz-4.7.0.tgz#fb8011c84da422612b8be61d609664df976a6c9a"
+  integrity sha512-+igNdYIuGe8zncCb6gRxEfZ14Ru0SrI+7rXOueadxBWEn3zkBd3xyTE1RjG6qM3GY+0U7vN8DmT7o9CRcyR++A==
+
 git-log-parser@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/git-log-parser/-/git-log-parser-1.2.0.tgz#2e6a4c1b13fc00028207ba795a7ac31667b9fd4a"
@@ -2920,9 +2925,9 @@ inquirer@6.5.0:
     through "^2.3.6"
 
 inquirer@^7.0.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.1.0.tgz#1298a01859883e17c7264b82870ae1034f92dd29"
-  integrity sha512-5fJMWEmikSYu0nv/flMc475MhGbB7TSPd/2IpFV4I4rMklboCH2rQjYY5kKiYGHqUF9gvaambupcJFFG9dvReg==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.2.0.tgz#63ce99d823090de7eb420e4bb05e6f3449aa389a"
+  integrity sha512-E0c4rPwr9ByePfNlTIB8z51kK1s2n6jrHuJeEHENl/sbq2G/S1auvibgEwNR4uSyiU+PiYHqSwsgGiXjG8p5ZQ==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^3.0.0"
