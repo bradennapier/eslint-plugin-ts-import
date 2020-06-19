@@ -3,12 +3,14 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+// type-only import
+// eslint-disable-next-line import/no-extraneous-dependencies
+import type { TSESTree } from '@typescript-eslint/experimental-utils';
 
 import * as eslint from 'eslint';
-import { TSESTree } from '@typescript-eslint/experimental-utils';
+
 import * as fpath from 'path';
 import minimatch from 'minimatch';
-// import * as tsHelpers from '@zerollup/ts-helpers';
 import { ImportPathInternalResolver } from '../importHelpers';
 
 import { createImportRuleListener } from '../utils';
