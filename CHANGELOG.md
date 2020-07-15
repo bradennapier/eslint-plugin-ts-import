@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.3...v1.1.4) (2020-07-15)
+
+
+### Reverts
+
+* Revert "Improved Resolution Handling (#9)" (#10) ([87ed197](https://github.com/bradennapier/eslint-plugin-ts-import/commit/87ed197338bd7b777255d1e6a1cbedf3a3735a49)), closes [#9](https://github.com/bradennapier/eslint-plugin-ts-import/issues/9) [#10](https://github.com/bradennapier/eslint-plugin-ts-import/issues/10)
+
 ## [1.1.3](https://github.com/bradennapier/eslint-plugin-ts-import/compare/v1.1.2...v1.1.3) (2020-06-19)
 
 
