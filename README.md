@@ -48,7 +48,6 @@
 - Provide import patterns that restrict imports of certain files based on location.
 - Ensure imports meet the expected guidelines within your repo.
 - Adapted from VSCode's rule `code-import-patterns`.
-- Works with configured `paths` from your `tsconfig.json`
 - Provide custom eslint messaging for each pattern if needed.
 - Useful in monorepos and most Typescript projects which utilize incremental builds.
 
@@ -60,6 +59,10 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.lint.json',
+    sourceType: 'module',
+  },
   rules: {
     'ts-import/patterns': [
       'error',
@@ -92,10 +95,13 @@ module.exports = {
       },
     ],
   },
-  plugins: ['ts-import']
+  plugins: ['ts-import'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        directory: 'tsconfig.lint.json',
+      },
+    },
+  },
 }
 ```
-
-## Special Thanks
-
-- While originally utilizing custom logic, we since borrowed the resolving method used by [eslint-import-resolver-typescript](https://github.com/alexgorbatchev/eslint-import-resolver-typescript).
