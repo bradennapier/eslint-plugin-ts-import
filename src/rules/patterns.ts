@@ -6,18 +6,14 @@
 // type-only import - fixed by https://github.com/benmosher/eslint-plugin-import/pull/1820
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { TSESTree } from '@typescript-eslint/experimental-utils';
-import debug from 'debug';
 
 import * as eslint from 'eslint';
 
 import * as fpath from 'path';
-
 import minimatch from 'minimatch';
+import { ImportPathInternalResolver } from '../importHelpers';
 
 import { createImportRuleListener } from '../utils';
-import { resolve } from '../configPaths';
-
-const log = debug('eslint-plugin-ts-import');
 
 interface ImportPatternsConfig {
   target: string;
@@ -28,6 +24,8 @@ interface ImportPatternsConfig {
 }
 
 export default class ImportPatternsRule implements eslint.Rule.RuleModule {
+  private importResolver: ImportPathInternalResolver | undefined;
+
   readonly meta: eslint.Rule.RuleMetaData = {
     messages: {
       badImportCustomMessage: "{{message}} (allowed: '{{allowed}}')",
@@ -41,6 +39,12 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
 
   create(context: eslint.Rule.RuleContext): eslint.Rule.RuleListener {
     const configs = <ImportPatternsConfig[]>context.options;
+    // this.pathResolver = new tsHelpers.ImportPathsResolver(
+    //   context.parserServices.program.getCompilerOptions(),
+    // );
+    this.importResolver = new ImportPathInternalResolver(
+      context.parserServices.program,
+    );
     for (const config of configs) {
       if (minimatch(context.getFilename(), config.target)) {
         return createImportRuleListener((node, value) =>
@@ -75,15 +79,35 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
       allowed = config.allowed;
     }
 
-    const importPath = resolve(path, fileName, null).path;
+    let importPath =
+      this.importResolver && this.importResolver.resolveImport(path, dirName);
 
-    let matched =
-      config.modules !== false && importPath?.includes('node_modules');
+    if (importPath) {
+      importPath = fpath.resolve(importPath);
+    }
 
-    log('Initial Matched? ', { importPath, matched });
+    let matched = false;
+
+    // check node_modules match first and allow unless set to false
+    if (config.modules !== false && !relativePath) {
+      if (importPath && importPath.includes('node_modules/')) {
+        // confirmed
+        matched = true;
+      } else {
+        // this should rarely occur since we should have resolved with typescript
+        try {
+          require.resolve(path, {
+            paths: [dirName],
+          });
+          matched = true;
+        } catch {
+          // '/users/shared/development/projects/@auroradao/project9/src/node_modules/sequelize/types/index.d.ts'
+          // failed to find as a node_module
+        }
+      }
+    }
 
     if (!matched) {
-      log('Checking: ', { path, importPath, allowed });
       for (const pattern of allowed) {
         if (!relativePath && pattern === path) {
           // direct match
