@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-ts-import",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Provide Typescript import-patterns that are expected to be followed within the repo",
   "homepage": "https://github.com/bradennapier/eslint-plugin-ts-import",
   "author": "Braden Napier <bradynapier@gmail.com>",
