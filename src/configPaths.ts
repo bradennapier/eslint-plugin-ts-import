@@ -36,6 +36,7 @@ export function resolve(
   options: TsResolverOptions | null,
 ): {
   found: boolean;
+  core?: boolean;
   path?: string | null;
 } {
   // eslint-disable-next-line no-param-reassign
@@ -49,7 +50,8 @@ export function resolve(
 
     return {
       found: true,
-      path: null,
+      core: true,
+      path: source,
     };
   }
 

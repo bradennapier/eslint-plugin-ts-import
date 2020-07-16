@@ -24,6 +24,10 @@ interface ImportPatternsConfig {
   re: RegExp;
   allowed: string | Array<string | [RegExp, string]>;
   modules?: boolean;
+  /**
+   * If false, core node modules such as path, fs, stream will not be allowed
+   */
+  node?: boolean;
   message?: string;
 }
 
@@ -31,6 +35,10 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
   readonly meta: eslint.Rule.RuleMetaData = {
     messages: {
       badImportCustomMessage: "{{message}} (allowed: '{{allowed}}')",
+      badImportCustomCoreMessage:
+        "{{message}}, core modules may not be imported (allowed: '{{allowed}}')",
+      badImportCore:
+        "This import violates the provided import-patterns, core modules may not be imported  (allowed: '{{allowed}}')",
       badImport:
         "This import violates the provided import-patterns (allowed: '{{allowed}}')",
     },
@@ -75,14 +83,24 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
       allowed = config.allowed;
     }
 
-    const importPath = resolve(path, fileName, null).path;
+    const { path: importPath, core: isCoreModule } = resolve(
+      path,
+      fileName,
+      null,
+    );
+
+    if (isCoreModule && config.node !== false) {
+      return;
+    }
 
     let matched =
-      config.modules !== false && importPath?.includes('node_modules');
+      !isCoreModule &&
+      config.modules !== false &&
+      importPath?.includes('node_modules');
 
-    log('Initial Matched? ', { importPath, matched });
+    log('Initial Matched? ', { importPath, matched, isCoreModule });
 
-    if (!matched) {
+    if (!matched && !isCoreModule) {
       log('Checking: ', { path, importPath, allowed });
       for (const pattern of allowed) {
         if (!relativePath && pattern === path) {
@@ -136,15 +154,27 @@ export default class ImportPatternsRule implements eslint.Rule.RuleModule {
 
     if (!matched) {
       // None of the restrictions matched
+      let messageId = 'badImport';
+      if (isCoreModule) {
+        messageId = config.message
+          ? 'badImportCustomCoreMessage'
+          : 'badImportCore';
+      } else if (config.message) {
+        messageId = 'badImportCustomMessage';
+      }
       context.report({
         loc: node.loc,
-        messageId: config.message ? 'badImportCustomMessage' : 'badImport',
+        messageId,
         data: {
-          allowed: (config.modules !== false
-            ? [...allowed, 'node_modules']
-            : allowed
-          ).join(' or '),
-          message: config.message ? `${config.message} - ` : '',
+          allowed: [
+            ...allowed,
+            config.modules !== false ? '<node_modules>' : undefined,
+            config.node !== false ? '<node core>' : undefined,
+          ]
+            .filter((s): s is string => typeof s === 'string')
+            .join(' or '),
+
+          message: config.message || '',
         },
       });
     }

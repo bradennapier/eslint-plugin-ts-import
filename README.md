@@ -66,9 +66,14 @@ module.exports = {
       {
         // these rules apply to any files which are within the src/services directory
         target: '**/src/services/*/**',
+
         // allow any imports to node_modules.  We confirm that the node_module exists in case the use of paths / absolute imports is used so that
         // we can tell the difference
         modules: true,
+
+        // allow imports of node core modules?  defaults to true.  if false, imports like fs, path, stream will cause an error
+        node: true,
+
         allowed: [
           // anything in src/services/{service}/** may import config `import config from 'config'`
           'config',
