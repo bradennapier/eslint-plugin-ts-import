@@ -2,6 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+// Copyright 2021 Alex Gorbatchev <alex.gorbatchev@gmail.com>
+// Some code provided has been borrowed from eslint-import-resolver-typescript https://github.com/import-js/eslint-import-resolver-typescript
+
 // type-only import - fixed by https://github.com/benmosher/eslint-plugin-import/pull/1820
 // eslint-disable-next-line import/no-extraneous-dependencies
 import type { TSESTree } from '@typescript-eslint/experimental-utils';
