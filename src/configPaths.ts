@@ -1,3 +1,6 @@
+// Copyright 2021 Alex Gorbatchev <alex.gorbatchev@gmail.com>
+// Some code provided has been borrowed from eslint-import-resolver-typescript https://github.com/import-js/eslint-import-resolver-typescript
+
 /* eslint-disable no-nested-ternary */
 import path from 'path';
 
